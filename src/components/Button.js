@@ -1,10 +1,8 @@
-import React from 'react'
-import './Button.css'
+import styled from 'styled-components/macro'
 
-export default function Button({ text, onClick }) {
-  return (
-    <button className="Button" onClick={onClick}>
-      {text}
-    </button>
-  )
-}
+export default styled.button`
+  padding: 5px;
+  border: 1px solid black;
+  background-color: ${props => (props.bgColor ? props.bgColor : 'lightgrey')};
+  color: ${props => (props.color ? props.color : 'black')};
+`

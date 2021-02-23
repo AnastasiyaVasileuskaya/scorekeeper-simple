@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import './App.css'
 import Button from './Button'
 import Player from './Player'
 import PlayerForm from './PlayerForm'
+import styled from 'styled-components/macro'
 
 function App() {
   const [players, setPlayers] = useState([])
@@ -38,7 +38,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <AppGrid>
       <PlayerForm onAddPlayer={handleAddPlayer} />
       {players.map((player, index) => (
         <Player
@@ -48,11 +48,25 @@ function App() {
           onMinus={() => handleMinus(index)}
         />
       ))}
-
-      <Button text="Reset scores" onClick={resetScore}></Button>
-      <Button text="Reset all" onClick={resetAll}></Button>
-    </div>
+      <ButtonGrid>
+        <Button onClick={resetScore}>Reset scores</Button>
+        <Button bgColor="red" color="white" onClick={resetAll}>
+          Reset all
+        </Button>
+      </ButtonGrid>
+    </AppGrid>
   )
 }
 
 export default App
+
+const AppGrid = styled.div`
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+`
+const ButtonGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+`
