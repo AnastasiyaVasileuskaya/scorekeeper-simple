@@ -1,13 +1,13 @@
 import React from 'react'
-import './PlayerForm.css'
+import styled from 'styled-components/macro'
 
 export default function PlayerForm({ onAddPlayer }) {
   return (
-    <form className="PlayerForm" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <label>
         Add player:
         <br />
-        <input name="player" placeholder="Player name" />
+        <Input name="player" placeholder="Player name" />
       </label>
     </form>
   )
@@ -22,3 +22,8 @@ export default function PlayerForm({ onAddPlayer }) {
     input.focus()
   }
 }
+
+const Input = styled.input`
+  border: 2px solid #bbb;
+  width: 100%;
+`
